@@ -3,4 +3,9 @@ version: '3'
 services:
   syncthing:
     image: syncthing/syncthing
+    ports: 
+      - 8384:8384
+      - 22000:22000
+    volumes: 
+      - ~:/var/syncthing
     restart: always
