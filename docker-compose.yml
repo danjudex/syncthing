@@ -3,9 +3,8 @@ version: '3'
 services:
   syncthing:
     image: syncthing/syncthing
-    ports: 
-      - 8384:8384
-      - 22000:22000
+    container_name: "syncthing"
+    network_mode: "host"
     volumes: 
-      - ~:/var/syncthing
+      - ./data:/var/syncthing
     restart: always
