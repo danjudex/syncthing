@@ -8,9 +8,23 @@ services:
       PUID: ${PUID}
       PGID: ${PGID}
     volumes:
-      - syncthing:/var/syncthing
-    network_mode: host
+      - ./syncthing:/var/syncthing
+    ports:
+      # - 8384:8384 # Web UI
+      - 22000:22000/tcp # TCP file transfers
+      - 22000:22000/udp # QUIC file transfers
+      - 21027:21027/udp # Receive local discovery broadcasts      
+    networks:
+      - default
+      - web
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}-syncthing.rule=Host(`${APP_HOST}`)
     restart: unless-stopped
 
-volumes:
-  syncthing:
+networks:
+  web:
+    external: true
+
+# volumes:
+#   syncthing:
