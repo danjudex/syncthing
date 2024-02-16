@@ -25,6 +25,3 @@ services:
 networks:
   web:
     external: true
-
-# volumes:
-#   syncthing:
