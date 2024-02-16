@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  syncthing:
+    volumes:
+      - type: bind
+        source: ~/apps
+        target: /apps
