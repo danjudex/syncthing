@@ -1,3 +1,11 @@
+# Установка
+
+```bash
+cp .env.example .env
+
+docker compose up -d
+```
+
 # Известные проблемы
 
 - Настройка по умолчанию отключить Sync
